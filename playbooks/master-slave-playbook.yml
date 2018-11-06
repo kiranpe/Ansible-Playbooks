@@ -1,0 +1,11 @@
+- name: install slave jar in remote host
+  hosts: docker
+  become: yes
+  tasks:
+  - name: create new folder for slave jar
+    file: path=/sites/slavejar state=directory
+  - name: download slave jar in remot host
+    get_url:
+        url: http://54.210.152.50:8080/jnlpJars/slave.jar
+        dest: /sites/slavejar
+    
